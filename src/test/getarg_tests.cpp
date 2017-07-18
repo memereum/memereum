@@ -25,143 +25,143 @@ ResetArgs(const std::string& strArg)
 
 BOOST_AUTO_TEST_CASE(boolarg)
 {
-    ResetArgs("-foo");
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", false));
-    BOOST_CHECK(GetBoolArg("-foo", true));
+    ResetArgs("-MEME");
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
 
     BOOST_CHECK(!GetBoolArg("-fo"));
     BOOST_CHECK(!GetBoolArg("-fo", false));
     BOOST_CHECK(GetBoolArg("-fo", true));
 
-    BOOST_CHECK(!GetBoolArg("-fooo"));
-    BOOST_CHECK(!GetBoolArg("-fooo", false));
-    BOOST_CHECK(GetBoolArg("-fooo", true));
+    BOOST_CHECK(!GetBoolArg("-MEMEo"));
+    BOOST_CHECK(!GetBoolArg("-MEMEo", false));
+    BOOST_CHECK(GetBoolArg("-MEMEo", true));
 
-    ResetArgs("-foo=0");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
+    ResetArgs("-MEME=0");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
 
-    ResetArgs("-foo=1");
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", false));
-    BOOST_CHECK(GetBoolArg("-foo", true));
+    ResetArgs("-MEME=1");
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
 
     // New 0.6 feature: auto-map -nosomething to !-something:
-    ResetArgs("-nofoo");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
+    ResetArgs("-noMEME");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
 
-    ResetArgs("-nofoo=1");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
+    ResetArgs("-noMEME=1");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
 
-    ResetArgs("-foo -nofoo");  // -foo should win
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", false));
-    BOOST_CHECK(GetBoolArg("-foo", true));
+    ResetArgs("-MEME -noMEME");  // -MEME should win
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
 
-    ResetArgs("-foo=1 -nofoo=1");  // -foo should win
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", false));
-    BOOST_CHECK(GetBoolArg("-foo", true));
+    ResetArgs("-MEME=1 -noMEME=1");  // -MEME should win
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
 
-    ResetArgs("-foo=0 -nofoo=0");  // -foo should win
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
+    ResetArgs("-MEME=0 -noMEME=0");  // -MEME should win
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
 
     // New 0.6 feature: treat -- same as -:
-    ResetArgs("--foo=1");
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", false));
-    BOOST_CHECK(GetBoolArg("-foo", true));
+    ResetArgs("--MEME=1");
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
 
-    ResetArgs("--nofoo=1");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
+    ResetArgs("--noMEME=1");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
 
 }
 
 BOOST_AUTO_TEST_CASE(stringarg)
 {
     ResetArgs("");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "");
-    BOOST_CHECK_EQUAL(GetArg("-foo", "eleven"), "eleven");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", "eleven"), "eleven");
 
-    ResetArgs("-foo -bar");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "");
-    BOOST_CHECK_EQUAL(GetArg("-foo", "eleven"), "");
+    ResetArgs("-MEME -bar");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", "eleven"), "");
 
-    ResetArgs("-foo=");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "");
-    BOOST_CHECK_EQUAL(GetArg("-foo", "eleven"), "");
+    ResetArgs("-MEME=");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", "eleven"), "");
 
-    ResetArgs("-foo=11");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "11");
-    BOOST_CHECK_EQUAL(GetArg("-foo", "eleven"), "11");
+    ResetArgs("-MEME=11");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "11");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", "eleven"), "11");
 
-    ResetArgs("-foo=eleven");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "eleven");
-    BOOST_CHECK_EQUAL(GetArg("-foo", "eleven"), "eleven");
+    ResetArgs("-MEME=eleven");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "eleven");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", "eleven"), "eleven");
 
 }
 
 BOOST_AUTO_TEST_CASE(intarg)
 {
     ResetArgs("");
-    BOOST_CHECK_EQUAL(GetArg("-foo", 11), 11);
-    BOOST_CHECK_EQUAL(GetArg("-foo", 0), 0);
+    BOOST_CHECK_EQUAL(GetArg("-MEME", 11), 11);
+    BOOST_CHECK_EQUAL(GetArg("-MEME", 0), 0);
 
-    ResetArgs("-foo -bar");
-    BOOST_CHECK_EQUAL(GetArg("-foo", 11), 0);
+    ResetArgs("-MEME -bar");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", 11), 0);
     BOOST_CHECK_EQUAL(GetArg("-bar", 11), 0);
 
-    ResetArgs("-foo=11 -bar=12");
-    BOOST_CHECK_EQUAL(GetArg("-foo", 0), 11);
+    ResetArgs("-MEME=11 -bar=12");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", 0), 11);
     BOOST_CHECK_EQUAL(GetArg("-bar", 11), 12);
 
-    ResetArgs("-foo=NaN -bar=NotANumber");
-    BOOST_CHECK_EQUAL(GetArg("-foo", 1), 0);
+    ResetArgs("-MEME=NaN -bar=NotANumber");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", 1), 0);
     BOOST_CHECK_EQUAL(GetArg("-bar", 11), 0);
 }
 
 BOOST_AUTO_TEST_CASE(doubledash)
 {
-    ResetArgs("--foo");
-    BOOST_CHECK_EQUAL(GetBoolArg("-foo"), true);
+    ResetArgs("--MEME");
+    BOOST_CHECK_EQUAL(GetBoolArg("-MEME"), true);
 
-    ResetArgs("--foo=verbose --bar=1");
-    BOOST_CHECK_EQUAL(GetArg("-foo", ""), "verbose");
+    ResetArgs("--MEME=verbose --bar=1");
+    BOOST_CHECK_EQUAL(GetArg("-MEME", ""), "verbose");
     BOOST_CHECK_EQUAL(GetArg("-bar", 0), 1);
 }
 
 BOOST_AUTO_TEST_CASE(boolargno)
 {
-    ResetArgs("-nofoo");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
+    ResetArgs("-noMEME");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
 
-    ResetArgs("-nofoo=1");
-    BOOST_CHECK(!GetBoolArg("-foo"));
-    BOOST_CHECK(!GetBoolArg("-foo", true));
-    BOOST_CHECK(!GetBoolArg("-foo", false));
+    ResetArgs("-noMEME=1");
+    BOOST_CHECK(!GetBoolArg("-MEME"));
+    BOOST_CHECK(!GetBoolArg("-MEME", true));
+    BOOST_CHECK(!GetBoolArg("-MEME", false));
 
-    ResetArgs("-nofoo=0");
-    BOOST_CHECK(GetBoolArg("-foo"));
-    BOOST_CHECK(GetBoolArg("-foo", true));
-    BOOST_CHECK(GetBoolArg("-foo", false));
+    ResetArgs("-noMEME=0");
+    BOOST_CHECK(GetBoolArg("-MEME"));
+    BOOST_CHECK(GetBoolArg("-MEME", true));
+    BOOST_CHECK(GetBoolArg("-MEME", false));
 
-    ResetArgs("-foo --nofoo");
-    BOOST_CHECK(GetBoolArg("-foo"));
+    ResetArgs("-MEME --noMEME");
+    BOOST_CHECK(GetBoolArg("-MEME"));
 
-    ResetArgs("-nofoo -foo"); // foo always wins:
-    BOOST_CHECK(GetBoolArg("-foo"));
+    ResetArgs("-noMEME -MEME"); // MEME always wins:
+    BOOST_CHECK(GetBoolArg("-MEME"));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
